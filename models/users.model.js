@@ -9,7 +9,7 @@ let validateEmail = function(email) {
 const UserSchema = new mongoose.Schema({
     name:{type:String,trim:true},
     fb_id:{type:String},
-    phone:{type:String,unique:true,trim:true},
+    mobile:{type:String,unique:true,trim:true},
     image:{type:String},
 },{timestamps: true});
 
