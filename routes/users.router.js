@@ -23,15 +23,15 @@ router.route("/")
     }
 })
 
-router.route("/fbid")
+// router.route("/fbid")
 
-.get(async(req,res)=>{
-    try{
-        const data = await Users.findOne(fbid)
-        res.json({success:true,data})
-    }catch(err){
-        res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
-    }
-})
+// .get(async(req,res)=>{
+//     try{
+//         const data = await Users.findOne(fbid)
+//         res.json({success:true,data})
+//     }catch(err){
+//         res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
+//     }
+// })
 
 module.exports = router
