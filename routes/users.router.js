@@ -18,31 +18,31 @@ router.route("/")
         const NewUser = new Users(users)
         const savedUser = await NewUser.save()
         console.log(savedUser)
-        res.json({success:true,users:savedUser,userid:savedUser._id})
+        res.json({success:true,users:savedUser})
     }catch(err){
         res.status(500).json({ success: false, message: "unable to register", errorMessage: err.message})
     }
 })
-router.route("/fb/:fbid")
-.get(async(req,res)=>{
-    try{
-        const fbid = req.params.fbid
-        const data = await Users.findOne({fb_id:fbid})
-        res.json({success:true,data})
-    }catch(err){
-        res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
-    }
-})
+// router.route("/fb/:fbid")
+// .get(async(req,res)=>{
+//     try{
+//         const fbid = req.params.fbid
+//         const data = await Users.findOne({fb_id:fbid})
+//         res.json({success:true,data})
+//     }catch(err){
+//         res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
+//     }
+// })
 
-router.route("/mobile/:mobile")
-.get(async(req,res)=>{
-    try{
-        const mobile = req.params.mobile
-        const data = await Users.findOne({mobile:mobile})
-        res.json({success:true,data})
-    }catch(err){
-        res.status(500).json({success:false,message:"Unable to find user using mobile no",errorMessage:err.message})
-    }
-})
+// router.route("/mobile/:mobile")
+// .get(async(req,res)=>{
+//     try{
+//         const mobile = req.params.mobile
+//         const data = await Users.findOne({mobile:mobile})
+//         res.json({success:true,data})
+//     }catch(err){
+//         res.status(500).json({success:false,message:"Unable to find user using mobile no",errorMessage:err.message})
+//     }
+// })
 
 module.exports = router
