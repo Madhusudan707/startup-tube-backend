@@ -26,7 +26,7 @@ router.route("/:fb_id")
 .get(async(req,res)=>{
     try{
         const fb_id = req.params
-        const data = await Users.findOne({fb_id})
+        const data = await Users.findOne({fb_id:fb_id})
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
@@ -37,7 +37,7 @@ router.route("/:mobile")
 .get(async(req,res)=>{
     try{
         const mobile = req.params
-        const data = await Users.findOne({mobile})
+        const data = await Users.findOne({mobile:mobile})
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to find user using mobile no",errorMessage:err.message})
