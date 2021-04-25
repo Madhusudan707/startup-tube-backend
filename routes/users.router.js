@@ -6,7 +6,9 @@ router.route("/")
 .get(async(req,res)=>{
     try{
         const data = await Users.find({})
+        console.log(data)
         res.json({success:true,data})
+        console.log(data)
     }catch(err){
         res.status(500).json({success:false,message:"Unable to find user",errorMessage:err.message})
     }
@@ -17,8 +19,8 @@ router.route("/")
         const users = req.body;
         const NewUser = new Users(users)
         const savedUser = await NewUser.save()
+        localStorage.setItem("users",savedUser)
         res.json({success:true,users:savedUser})
-        console.log(users);
     }catch(err){
         res.status(500).json({ success: false, message: "unable to register", errorMessage: err.message})
     }
