@@ -22,11 +22,11 @@ router.route("/")
         res.status(500).json({ success: false, message: "unable to register", errorMessage: err.message})
     }
 })
-router.route("/:fb_id")
+router.route("/:fbid")
 .get(async(req,res)=>{
     try{
-        const fb_id = req.params
-        const data = await Users.findOne({fb_id:fb_id})
+        const fbid = req.params.fbid
+        const data = await Users.findOne({fb_id:fbid})
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
