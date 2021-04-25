@@ -18,6 +18,7 @@ router.route("/")
         const NewUser = new Users(users)
         const savedUser = await NewUser.save()
         res.json({success:true,users:savedUser})
+        console.log(users);
     }catch(err){
         res.status(500).json({ success: false, message: "unable to register", errorMessage: err.message})
     }
