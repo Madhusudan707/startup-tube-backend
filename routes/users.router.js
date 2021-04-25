@@ -33,11 +33,11 @@ router.route("/:fb_id")
     }
 })
 
-.router.route("/:mobile")
+router.route("/:mobile")
 .get(async(req,res)=>{
     try{
         const mobile = req.params
-        const data = await.Users.findOne({mobile})
+        const data = await Users.findOne({mobile})
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to find user using mobile no",errorMessage:err.message})
