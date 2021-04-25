@@ -17,12 +17,13 @@ router.route("/")
         const users = req.body;
         const NewUser = new Users(users)
         const savedUser = await NewUser.save()
-        res.json({success:true,users:savedUser})
+        console.log(savedUser)
+        res.json({success:true,users:savedUser,userid:savedUser._id})
     }catch(err){
         res.status(500).json({ success: false, message: "unable to register", errorMessage: err.message})
     }
 })
-router.route("/:fbid")
+router.route("/fb/:fbid")
 .get(async(req,res)=>{
     try{
         const fbid = req.params.fbid
@@ -33,10 +34,10 @@ router.route("/:fbid")
     }
 })
 
-router.route("/:mobile")
+router.route("/mobile/:mobile")
 .get(async(req,res)=>{
     try{
-        const mobile = req.params
+        const mobile = req.params.mobile
         const data = await Users.findOne({mobile:mobile})
         res.json({success:true,data})
     }catch(err){
