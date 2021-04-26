@@ -29,8 +29,8 @@ router.route("/name/:name")
    
     try{
         const byName = req.params.name
-        const data = await Playlists.findOne({name:byName}).populate('Videos').exec((Videos)=>{
-            console.log("Populated Data " + Videos)
+        const data = await Playlists.findOne({name:byName}).populate('vid').exec((vid)=>{
+            console.log("Populated Data " + vid)
         })
         res.json({success:true,data})
     }catch(err){
