@@ -24,11 +24,12 @@ router.route("/")
 })
 
 
-router.route("/:name")
+router.route("/name/:name")
 .get(async(req,res)=>{
-    res.send(req.params)
+   
     try{
-        const data = await Playlists.find({})
+        const byName = req.params.name
+        const data = await Playlists.find({name:byName})
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to load playlist",errorMessage:err.message})
