@@ -29,7 +29,7 @@ router.route("/name/:name")
    
     try{
         const byName = req.params.name
-        const data = await (await Playlists.findOne({name:byName})).populate('Videos').exec((err,Videos)=>{
+        const data = await Playlists.findOne({name:byName}).populate('Videos').exec((Videos)=>{
             console.log("Populated Data " + Videos)
         })
         res.json({success:true,data})
