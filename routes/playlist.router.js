@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const {Playlists} =  require("../models/playlist.model")
+const {Playlist} =  require("../models/playlist.model")
 
 router.route("/")
 .get(async(req,res)=>{
     try{
-        const data = await Playlists.find({})
+        const data = await Playlist.find({})
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to load playlist",errorMessage:err.message})
@@ -15,7 +15,7 @@ router.route("/")
 .post(async (req,res)=>{
     try{
         const playlists = req.body;
-        const NewPlaylist = new Playlists(playlists)
+        const NewPlaylist = new Playlist(playlists)
         const savedPlaylist = await NewPlaylist.save()
         res.json({success:true,playlists:savedPlaylist})
     }catch(err){
@@ -29,9 +29,10 @@ router.route("/name/:name")
    
     try{
         const byName = req.params.name
-        const data = await Playlists.findOne({name:byName}).populate('vid').exec((vid)=>{
-            console.log("Populated Data " + vid)
-        })
+        // const data = await Playlist.findOne({name:byName}).populate('vid').exec((vid)=>{
+        //     console.log("Populated Data " + vid)
+        // })
+        const data =  await Playlist.findOne({name:byName}).populate('vid').execPopulate()
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to load playlist",errorMessage:err.message})

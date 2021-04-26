@@ -6,6 +6,6 @@ const PlaylistSchema = new mongoose.Schema({
     name:String
 });
 
-const Playlists = mongoose.model("Playlists",PlaylistSchema)
-module.exports = {Playlists}
+const Playlist = mongoose.model("Playlist",PlaylistSchema)
+module.exports = {Playlist}
 
