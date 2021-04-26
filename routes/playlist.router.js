@@ -29,10 +29,7 @@ router.route("/name/:name")
    
     try{
         const byName = req.params.name
-        // const data = await Playlist.findOne({name:byName}).populate('vid').exec((vid)=>{
-        //     console.log("Populated Data " + vid)
-        // })
-        const data =  await Playlist.findOne({name:byName}).populate('vid').execPopulate()
+        const playlistName = await Playlist.findOne({name:byName}).populate('vid')
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to load playlist",errorMessage:err.message})

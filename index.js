@@ -1,9 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { initializeDBConnection } = require("./dbConfig");
-const mongoose = require("mongoose");
 const cors = require("cors");
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3002
 const app = express();
 
 app.use(bodyParser.json());
