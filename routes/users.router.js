@@ -34,15 +34,15 @@ router.route("/fb/:fbid")
     }
 })
 
-// router.route("/mobile/:mobile")
-// .get(async(req,res)=>{
-//     try{
-//         const mobile = req.params.mobile
-//         const data = await Users.findOne({mobile:mobile})
-//         res.json({success:true,data})
-//     }catch(err){
-//         res.status(500).json({success:false,message:"Unable to find user using mobile no",errorMessage:err.message})
-//     }
-// })
+router.route("/mobile/:mobile")
+.get(async(req,res)=>{
+    try{
+        const mobile = req.params.mobile
+        const data = await Users.findOne({mobile:mobile})
+        res.json({success:true,data})
+    }catch(err){
+        res.status(500).json({success:false,message:"Unable to find user using mobile no",errorMessage:err.message})
+    }
+})
 
 module.exports = router
