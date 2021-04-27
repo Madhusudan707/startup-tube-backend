@@ -5,7 +5,7 @@ const {Histories} =  require("../models/history.model")
 router.route("/")
 .get(async(req,res)=>{
     try{
-        const data = await Histories.find({})
+        const data = await Histories.find({}).populate('vid')
         res.json({success:true,data})
     }catch(err){
         res.status(500).json({success:false,message:"Unable to load history",errorMessage:err.message})
