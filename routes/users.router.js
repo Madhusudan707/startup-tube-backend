@@ -23,16 +23,16 @@ router.route("/")
         res.status(500).json({ success: false, message: "unable to register", errorMessage: err.message})
     }
 })
-// router.route("/fb/:fbid")
-// .get(async(req,res)=>{
-//     try{
-//         const fbid = req.params.fbid
-//         const data = await Users.findOne({fb_id:fbid})
-//         res.json({success:true,data})
-//     }catch(err){
-//         res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
-//     }
-// })
+router.route("/fb/:fbid")
+.get(async(req,res)=>{
+    try{
+        const fbid = req.params.fbid
+        const data = await Users.findOne({fb_id:fbid})
+        res.json({success:true,data})
+    }catch(err){
+        res.status(500).json({success:false,message:"Unable to find user using fb id",errorMessage:err.message})
+    }
+})
 
 // router.route("/mobile/:mobile")
 // .get(async(req,res)=>{
