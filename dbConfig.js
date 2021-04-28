@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 // TODO: use async await instead of then/catch
 
 function initializeDBConnection(){
-    mongoose.connect("mongodb+srv://xdev:Xdev@1234@maddy.55igy.mongodb.net/startup-tube",{
+    mongoose.connect(process.env.CONNECTION_URL,{
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useFindAndModify:true,
