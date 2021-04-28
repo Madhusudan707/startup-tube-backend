@@ -3,6 +3,7 @@ const router = express.Router();
 const { UsersActivity } = require("../models/usersActivity.model");
 const _ = require("lodash");
 
+/* 1. Normal Get and Post */
 router
   .route("/")
   .get(async (req, res) => {
@@ -37,6 +38,9 @@ router
     }
   });
 
+
+/* 2. Populating Data for specific user*/
+
 router.route("/user/:id").get(async (req, res) => {
   try {
     const id = req.params.id;
@@ -55,6 +59,8 @@ router.route("/user/:id").get(async (req, res) => {
       });
   }
 });
+
+/* 3.Checking with user id if history is already present or not */
 router.route("/user/:id/history/:vid").get(async (req, res) => {
   try {
     const { id, vid } = req.params;
@@ -75,7 +81,9 @@ router.route("/user/:id/history/:vid").get(async (req, res) => {
       });
   }
 });
-router.route("/user/update/:id").post(async (req, res) => {
+
+/* 4.Updating the history if it is not present */
+router.route("/user/history/update/:id").post(async (req, res) => {
   try {
     const filter = req.params.id;
     const update = req.body;
@@ -96,5 +104,7 @@ router.route("/user/update/:id").post(async (req, res) => {
       });
   }
 });
+
+/*5 */
 
 module.exports = router;
