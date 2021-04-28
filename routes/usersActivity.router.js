@@ -60,6 +60,47 @@ router.route("/user/:id").get(async (req, res) => {
   }
 });
 
+/* 2.1 Populating Data of History for specific user */
+
+router.route("/user/history:id").get(async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await UsersActivity.findOne({ uid: id })
+      .populate("history")
+    res.json({ success: true, data });
+  } catch (err) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Unable to populate user activity for history",
+        errorMessage: err.message,
+      });
+  }
+});
+
+/* 2.2 Populating Data of Like for specific user */
+
+router.route("/user/like:id").get(async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await UsersActivity.findOne({ uid: id })
+      .populate("like")
+    res.json({ success: true, data });
+  } catch (err) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Unable to populate user activity for like",
+        errorMessage: err.message,
+      });
+  }
+});
+
+
+
+
 /* 3.Checking with user id if history is already present or not */
 router.route("/user/:id/history/:vid").get(async (req, res) => {
   try {
