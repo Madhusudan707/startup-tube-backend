@@ -62,7 +62,7 @@ router.route("/user/:id").get(async (req, res) => {
 
 /* 2.1 Populating Data of History for specific user */
 
-router.route("/user/history:id").get(async (req, res) => {
+router.route("/user/history/:id").get(async (req, res) => {
   try {
     const id = req.params.id;
     const data = await UsersActivity.findOne({ uid: id })
@@ -81,7 +81,7 @@ router.route("/user/history:id").get(async (req, res) => {
 
 /* 2.2 Populating Data of Like for specific user */
 
-router.route("/user/like:id").get(async (req, res) => {
+router.route("/user/like/:id").get(async (req, res) => {
   try {
     const id = req.params.id;
     const data = await UsersActivity.findOne({ uid: id })
